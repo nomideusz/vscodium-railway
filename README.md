@@ -1,6 +1,6 @@
 # Deploy and Host VSCodium on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/vscodium?utm_medium=integration&utm_source=button&utm_campaign=vscodium)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/vscodium?referralCode=sLjDXb&utm_medium=integration&utm_source=button&utm_campaign=vscodium)
 
 This template runs the full desktop [VSCodium](https://vscodium.com/) application in the cloud, streamed to any device through the [linuxserver.io](https://docs.linuxserver.io/images/docker-vscodium/) Selkies web interface. Open your Railway domain, log in, and VSCodium is running on the server with its files, settings and plugins persisted between visits.
 
@@ -34,7 +34,7 @@ Notes and limits:
 - Rendering is CPU-based (no GPU on Railway). Fine for the application UI and light media; not for GPU-accelerated work.
 - Give the service 2 GB of RAM or more; desktop applications are memory-hungry.
 - Only `/config` persists. Anything installed outside it is gone after a redeploy.
-- Want a whole desktop instead of one app? The same author publishes a [Linux Desktop](https://railway.com/deploy/linux-desktop) template.
+- Want a whole desktop instead of one app? The same author publishes a [Linux Desktop](https://railway.com/deploy/linux-desktop?referralCode=sLjDXb) template.
 
 ## Why Deploy VSCodium on Railway?
 
