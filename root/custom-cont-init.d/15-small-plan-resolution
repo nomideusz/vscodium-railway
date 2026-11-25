@@ -1,0 +1,16 @@
+#!/bin/sh
+# This image streams a Wayland desktop that Selkies sizes to the viewer's
+# window (times its DPI scale), up to 7680x4320; MAX_RES does nothing here.
+# On a 0.5 GB plan a large or HiDPI screen (a 4K window became 4800x2700)
+# OOM-kills Selkies every few seconds and the page sits on "Waiting for
+# stream...", while Railway still shows the deploy as SUCCESS. Under 700 MiB
+# of memory, lock the desktop at 1920x1080; the browser scales the stream to
+# fit. Bigger plans keep the resize-to-window desktop. Setting
+# SELKIES_MANUAL_WIDTH/HEIGHT yourself overrides this.
+[ -n "${SELKIES_MANUAL_WIDTH}${SELKIES_MANUAL_HEIGHT}" ] && exit 0
+max=$(cat /sys/fs/cgroup/memory.max 2>/dev/null)
+case "$max" in ''|max|*[!0-9]*) exit 0 ;; esac
+[ "$max" -lt 734003200 ] || exit 0
+printf 1920 > /run/s6/container_environment/SELKIES_MANUAL_WIDTH
+printf 1080 > /run/s6/container_environment/SELKIES_MANUAL_HEIGHT
+echo "[railway] $((max >> 20)) MiB of memory: desktop locked at 1920x1080 (give it 1 GB to resize to your window)"
