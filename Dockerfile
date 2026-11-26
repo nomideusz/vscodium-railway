@@ -1,4 +1,4 @@
-FROM linuxserver/vscodium:1.143.17232-ls299
+FROM linuxserver/vscodium:1.143.17232-ls300
 
 # MAX_RES capped the Xvfb screen on older X11 bases. This base streams a
 # Wayland desktop, which ignores it (a 4K window became 4800x2700); on small
